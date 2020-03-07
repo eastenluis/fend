@@ -2,45 +2,32 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Article Parser</title>
     </head>
 
     <body>
-
-        <header>
-            <h1>Article Analysis</h1>
-        </header>
-
-        <main>
-            <section>
-                <form name onsubmit="return handleSubmit(event)">
-                    <input 
-                        id="name" 
-                        type="text" 
-                        name="input" 
-                        value="" 
-                        onblur="onBlur()" 
-                        placeholder="Name"
-                    >
-                    <input 
-                        type="submit" 
-                        name="" 
-                        value="submit" 
-                        onclick="return handleSubmit(event)" 
-                        onsubmit="return handleSubmit(event)"
-                    >
-                </form>
-            <section>
-
-            <section>
-                <strong>Form Results:</strong>
-                <div id="results"></div>
-            </section>
-        </main>
-
-        <footer>
-            <p>This is a footer</p>
-        </footer>
+        <div class="container">
+            <header>
+                <h1>Article Analysis</h1>
+            </header>
+    
+            <main>
+                <section>
+                    <form class="search-bar" name="url-form" onsubmit="return handleSubmit(event)">
+                        <input 
+                            type="url" 
+                            name="article-url" 
+                            value="" 
+                            placeholder="News/Blogs/Articles URL"
+                            required
+                        >
+                        <button type="submit" class="nlp-button">Analyze</button>
+                    </form>
+                <section>
+                <section id="analysis-result"></section>
+            </main>
+        </div>
 
     </body>
 </html>
