@@ -1,3 +1,5 @@
+const WorkboxPlugin = require('workbox-webpack-plugin');
+
 const { commonPlugins, commonRules } = require('./webpack.common')
 
 module.exports = {
@@ -13,6 +15,7 @@ module.exports = {
         ]
     },
     plugins: [
-        ...commonPlugins
+        ...commonPlugins,
+        new WorkboxPlugin.GenerateSW(),
     ]
 }

@@ -17,8 +17,8 @@
             <section>
                 <form class="search-bar" name="url-form" onsubmit="return nlpApp.handleSubmit(event)">
                     <div class="split-group">
-                        <input type="url" name="article-url" id="article-url" value="" placeholder="News/Blogs/Articles URL" required
-                            onkeyup="return nlpApp.onKeyUp(event)">
+                        <input type="url" name="article-url" id="article-url" value=""
+                            placeholder="News/Blogs/Articles URL" required onkeyup="return nlpApp.onKeyUp(event)">
                         <button type="submit" class="nlp-button" id="analyze-button" disabled>Analyze</button>
                     </div>
                     <div id="error-message"></div>
@@ -34,7 +34,15 @@
             </section>
         </main>
     </div>
-
+    <script>
+        // Check that service workers are supported
+        if ('serviceWorker' in navigator) {
+            // Use the window load event to keep the page load performant
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/service-worker.js');
+            });
+        }
+    </script>
 </body>
 
 </html>
