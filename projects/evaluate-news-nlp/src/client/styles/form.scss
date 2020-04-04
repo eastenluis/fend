@@ -7,26 +7,40 @@
     color: #FFF;
     border: 1px solid #333;
     box-sizing: border-box;
+
+    &:disabled {
+        background-color: #aaaaaa;
+    }
 }
 
 .search-bar {
     text-align: center;
-    display: flex;
     margin: auto;
-    width: 100%; 
+    width: 100%;
     max-width: 640px;
 
-    input[type="url"] {
-        border-color: #333;
-        display: block;
-        padding: 0 10px;
-        height: 48px;
-        line-height: 48px;
-        flex: 1 1 auto;   
-        box-sizing: border-box;
+    .split-group {
+        display: flex;
+
+        input[type="url"] {
+            border-color: #333;
+            border-right-width: 0;
+            display: block;
+            padding: 0 10px;
+            height: 48px;
+            line-height: 48px;
+            flex: 1 1 auto;
+            box-sizing: border-box;
+        }
+
+        .nlp-button {
+            flex: 0 0 auto;
+        }
     }
 
-    .nlp-button {
-        flex: 0 0 auto;
+    #error-message {
+        color: #b60016;
+        padding: 10px;
+        text-align: left;
     }
 }

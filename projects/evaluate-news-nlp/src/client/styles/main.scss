@@ -1,4 +1,7 @@
+$primary-color: #333333;
+
 html, body {
+    color: #2d4554;
     font-size: 16px;
     font-family: "Helvetica Neue", Arial, sans-serif;
 }
@@ -9,5 +12,37 @@ html, body {
 
     header {
         text-align: center;
+    }
+}
+
+#analysis-result {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    border-top: 2px solid $primary-color;
+
+    .result-label {
+        font-weight: bold;
+        padding: 10px;
+        border-style: solid;
+        border-color: $primary-color;
+        border-width: 0 2px 2px 2px;
+    }
+
+    .result-value {
+        padding: 10px;
+        line-height: 1.414;
+        border-style: solid;
+        border-color: $primary-color;
+        border-width: 0 2px 2px 0;
+
+        .category-label {
+            background-color: $primary-color;
+            border: 1px solid $primary-color;
+            color: #FFF;
+            border-radius: 5px;
+            display: inline-block;
+            padding: 0 5px;
+            margin-right: 5px;
+        }
     }
 }

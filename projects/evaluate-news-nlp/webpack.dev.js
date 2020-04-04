@@ -11,6 +11,10 @@ module.exports = {
             ...commonRules
         ]
     },
+    output: {
+        library: 'nlpApp',
+        libraryTarget: 'var'
+    },
     plugins: [
         ...commonPlugins,
         new CleanWebpackPlugin({
@@ -21,6 +25,11 @@ module.exports = {
             // Automatically remove all unused webpack assets on rebuild
             cleanStaleWebpackAssets: true,
             protectWebpackAssets: false
-        })
-    ]
+        }),
+    ],
+    devServer: {
+        proxy: {
+            '/api': 'http://localhost:8081'
+        }
+    }
 }

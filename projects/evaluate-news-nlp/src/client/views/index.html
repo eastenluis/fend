@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Article Parser</title>
-    </head>
 
-    <body>
-        <div class="container">
-            <header>
-                <h1>Article Analysis</h1>
-            </header>
-    
-            <main>
-                <section>
-                    <form class="search-bar" name="url-form" onsubmit="return handleSubmit(event)">
-                        <input 
-                            type="url" 
-                            name="article-url" 
-                            value="" 
-                            placeholder="News/Blogs/Articles URL"
-                            required
-                        >
-                        <button type="submit" class="nlp-button">Analyze</button>
-                    </form>
-                <section>
-                <section id="analysis-result"></section>
-            </main>
-        </div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Article Parser</title>
+</head>
 
-    </body>
+<body>
+    <div class="container">
+        <header>
+            <h1>Article Analysis</h1>
+        </header>
+
+        <main>
+            <section>
+                <form class="search-bar" name="url-form" onsubmit="return nlpApp.handleSubmit(event)">
+                    <div class="split-group">
+                        <input type="url" name="article-url" id="article-url" value="" placeholder="News/Blogs/Articles URL" required
+                            onkeyup="return nlpApp.onKeyUp(event)">
+                        <button type="submit" class="nlp-button" id="analyze-button" disabled>Analyze</button>
+                    </div>
+                    <div id="error-message"></div>
+                </form>
+            </section>
+            <section id="analysis-result" style="visibility: hidden;">
+                <div class="result-label">Language</div>
+                <div id="text-language" class="result-value"></div>
+                <div class="result-label">Categories</div>
+                <div id="text-categories" class="result-value"></div>
+                <div class="result-label">Summarization</div>
+                <div id="text-summarization" class="result-value"></div>
+            </section>
+        </main>
+    </div>
+
+</body>
+
 </html>
