@@ -2,12 +2,14 @@ import debounce from 'lodash/debounce'
 
 import { requestTextAnalysisResult, requestTextSummarizationResult } from './apis'
 
-const setErrorMessage = (message) => {
+export const INPUT_DEBOUNCE = 500
+
+const setErrorMessage = message => {
     const errorMessage = document.getElementById('error-message')
     errorMessage.innerText = message
 }
 
-const validateFormValue = value => {
+export const validateFormValue = value => {
     const urlPattern = /^((http|https):\/\/)([a-zA-Z0-9]+(:[0-9])?)[a-zA-Z0-9\.\-\_~\/&\?\$\#\=\%]*$/i
     const submitButton = document.getElementById('analyze-button')
     if (!value) {
@@ -39,7 +41,7 @@ const updateSearchResult = (language, categories, sentences) => {
     })
 
     const summarySection = document.getElementById('text-summarization')
-    summarySection.innerText = sentences
+    summarySection.innerText = sentences.join(' ')
 
     document.getElementById('analysis-result').style.visibility = 'visible'
 }
@@ -70,4 +72,4 @@ export const handleSubmit = (event) => {
 export const onKeyUp = debounce((event) => {
     const value = event.target.value ? event.target.value.trim() : ''
     validateFormValue(value)
-}, 500)
+}, INPUT_DEBOUNCE)

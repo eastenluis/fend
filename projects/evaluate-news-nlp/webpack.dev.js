@@ -1,8 +1,9 @@
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const { EnvironmentPlugin } = require('webpack')
 const { commonPlugins, commonRules } = require('./webpack.common')
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['regenerator-runtime/runtime', './src/client/index.js'],
     mode: 'development',
     devtool: 'source-map',
     stats: 'verbose',
@@ -17,6 +18,9 @@ module.exports = {
     },
     plugins: [
         ...commonPlugins,
+        new EnvironmentPlugin({
+            NODE_ENV: 'development'
+        }),
         new CleanWebpackPlugin({
             // Simulate the removal of files
             dry: true,

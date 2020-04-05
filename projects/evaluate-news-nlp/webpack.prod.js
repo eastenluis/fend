@@ -1,9 +1,10 @@
 const WorkboxPlugin = require('workbox-webpack-plugin');
+const { EnvironmentPlugin } = require("webpack")
 
 const { commonPlugins, commonRules } = require('./webpack.common')
 
 module.exports = {
-    entry: './src/client/index.js',
+    entry: ['regenerator-runtime/runtime', './src/client/index.js'],
     mode: 'production',
     output: {
         library: 'nlpApp',
@@ -16,6 +17,9 @@ module.exports = {
     },
     plugins: [
         ...commonPlugins,
+        new EnvironmentPlugin({
+            NODE_ENV: 'production'
+        }),
         new WorkboxPlugin.GenerateSW(),
     ]
 }
